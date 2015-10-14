@@ -1,18 +1,25 @@
 #binarysearchtree.py
 
 class Node(object):
+	"""Represents an item in a binary search tree.
+	Each node has a left child, right child, and a value"""
 	def __init__(self, val=None):
-		"""Initializer: A new node representing an item of a binary search tree.
-
-		Instance variables:
-		val: value assigned to this node
-
-		left: the left child (node) of this node
-		right: the right child (node) of this node
-		"""
+		"""Creates a new node."""
 		self.left = None
 		self.right = None
 		self.value = val
+
+	def get_left(self):
+		"""Returns: left child of node n."""
+		return self.left
+
+	def get_right(self):
+		"""Returns: right child of node n."""
+		return self.right
+
+	def is_leaf(self):
+		"""Returns: True if node is a leaf, and False if node is not a leaf."""
+		return (self.right == None and self.left ==None)
 
 class BST(object):
 	def __init__(self, root=None):
@@ -29,7 +36,7 @@ class BST(object):
 			self.size = 1
 
 	def insert(self,val):
-		"""Inserts unique value val into tree. No duplicate node values."""
+		"""Inserts unique node with value val into tree. No duplicate nodes."""
 		#accessing tree root
 		root = self.root
 		#adding node to tree
@@ -57,14 +64,6 @@ class BST(object):
 		for val in val_list:
 			self.insert(val)
 
-	def get_left(self,n):
-		"""Returns: left child of node n."""
-		return n.left
-
-	def get_right(self,n):
-		"""Returns: right child of node n."""
-		return n.right
-
 	def print_init_message(self, traversal):
 		"""Prints out information about the tree: which traversal is being
 		performeed, the root value of the tree, and the size of the tree.
@@ -74,7 +73,7 @@ class BST(object):
 		print "    Size of tree %d" % self.size 
 
 	def preorder_print(self,root):
-		"""Prints out the preorder traversal of the tree with root root."""
+		"""Prints out the preorder traversal of the tree."""
 		if self.root == root:
 			self.print_init_message("preorder")
 		if root is not None:
@@ -83,7 +82,7 @@ class BST(object):
 			self.preorder_print(root.right)
 	
 	def inorder_print(self,root):
-		"""Prints out the inorder traversal of the tree with root root."""
+		"""Prints out the inorder traversal of the tree."""
 		if self.root == root:
 			self.print_init_message("inorder")
 		if root is not None:
@@ -92,7 +91,7 @@ class BST(object):
 			self.inorder_print(root.right)
 
 	def postorder_print(self,root):
-		"""Prints out the postorder traversal of the tree with root root"""
+		"""Prints out the postorder traversal of the tree."""
 		if self.root == root:
 			self.print_init_message("postorder")		
 		if root is not None:
@@ -118,6 +117,7 @@ if __name__ == '__main__':
     bt.preorder_print(root)
     bt.inorder_print(root)
     bt.postorder_print(root)
+    print root.is_leaf()
 
 
 
