@@ -1,5 +1,7 @@
 # Python-BST
 
+# Python-BST
+
 ###*Overview:*
 >BinaryTree.py contains a basic implementation of a binary search tree.
 >An instance of a BinaryTree has a root node, and a size.
@@ -9,11 +11,17 @@
 
 ###Methods:
 -->insert(val)
+
 -->insert_list(val_list)
+
 -->get_left(node)
+
 -->get_right(node)
+
 -->preorder_print(root)
+
 -->inorder_print(root)
+
 -->postorder_print(root)
 
 ###Testing:
