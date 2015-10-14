@@ -19,7 +19,7 @@ class Node(object):
 
 	def is_leaf(self):
 		"""Returns: True if node is a leaf, and False if node is not a leaf."""
-		return (self.right == None and self.left ==None)
+		return (self.right != None and self.left !=None)
 
 class BST(object):
 	def __init__(self, root=None):
@@ -30,7 +30,7 @@ class BST(object):
 		the tree using the insert method.
 		"""
 		self.root = root
-		if root == None:
+		if root is None:
 			self.size = 0
 		else:
 			self.size = 1
@@ -41,28 +41,31 @@ class BST(object):
 		root = self.root
 		#adding node to tree
 		if root is None:
-				self.root = Node(val)
+			self.root = Node(val)
 		else:	
 			if val < root.value:
-				if root.left is None:
-					root.left = Node(val) 
-				else:
-					left_tree = BST(root.left)
-					left_tree.insert(val)
+				left_tree = BST(root.left)
+				left_tree.insert(val)
 			elif val > root.value: 
-				if root.right is None:
-					root.right = Node(val)
-				else:
-					right_tree = BST(root.right)
-					right_tree.insert(val)
-		#update size of tree t
-		if root.value != val:
-			self.size += 1
+				right_tree = BST(root.right)
+				right_tree.insert(val)
+			#update size of tree t
+			if root.value != val:
+				self.size += 1
 
 	def insert_list(self,val_list):
 		"""Inserts a list of unique values into tree."""
 		for val in val_list:
 			self.insert(val)
+
+	def contains(self,n):
+		"""Returns: True if node n is in the tree, else False"""
+		if self is None or n is None:
+			return False
+		elif self.root.value == n.value:
+			return True
+		else:
+			return self.right.contains(n) or self.left.contains(n)
 
 	def print_init_message(self, traversal):
 		"""Prints out information about the tree: which traversal is being
@@ -117,8 +120,4 @@ if __name__ == '__main__':
     bt.preorder_print(root)
     bt.inorder_print(root)
     bt.postorder_print(root)
-    print root.is_leaf()
-
-
-
 
