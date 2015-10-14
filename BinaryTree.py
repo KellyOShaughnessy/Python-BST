@@ -48,11 +48,11 @@ class BinaryTree:
 			self.insert(val)
 
 	"""Returns left child of node"""
-	def getLeft(self,node):
+	def get_left(self,node):
 		return node.left
 
 	"""Returns right child of node"""
-	def getRight(self,node):
+	def get_right(self,node):
 		return node.right
 
 	"""Prints out information about the tree"""
